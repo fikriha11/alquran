@@ -56,7 +56,11 @@ class DetailSurahView extends GetView<DetailSurahController> {
             future: controller.getDetailSurah(surah.number.toString()),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
+                return const Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
               }
 
               if (!snapshot.hasData) {
@@ -65,9 +69,9 @@ class DetailSurahView extends GetView<DetailSurahController> {
 
               return Expanded(
                 child: ListView.builder(
-                  itemCount: snapshot.data?.verses.length,
+                  itemCount: snapshot.data?.verses?.length,
                   itemBuilder: (context, index) {
-                    detail.Verse? ayat = snapshot.data?.verses[index];
+                    detail.Verse? ayat = snapshot.data?.verses?[index];
                     return Padding(
                       padding: EdgeInsets.all(
                           sizeConfig.getProportionateScreenWidth(20)),
@@ -109,7 +113,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                 ),
                               ),
                               Text(
-                                ayat!.text.arab,
+                                ayat?.text?.arab ?? 'error',
                                 textAlign: TextAlign.end,
                                 style: const TextStyle(fontSize: 25),
                                 // style: Text,
@@ -119,7 +123,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                     sizeConfig.getProportionateScreenHeight(10),
                               ),
                               Text(
-                                ayat.text.transliteration.en,
+                                ayat?.text?.transliteration?.en ?? "error",
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(fontSize: 16),
                                 // style: Text,
@@ -129,7 +133,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                     sizeConfig.getProportionateScreenHeight(10),
                               ),
                               Text(
-                                ayat.translation.id,
+                                ayat?.translation?.id ?? 'error',
                                 textAlign: TextAlign.start,
                                 style: const TextStyle(fontSize: 20),
                                 // style: Text,
