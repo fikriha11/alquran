@@ -1,3 +1,4 @@
+import 'package:alquran/app/data/constant/color.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,6 +9,9 @@ void main() {
   runApp(
     GetMaterialApp(
       title: "Application",
+      theme: appLight,
+      darkTheme: appDark,
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

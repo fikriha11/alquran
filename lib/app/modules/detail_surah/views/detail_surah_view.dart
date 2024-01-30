@@ -15,7 +15,6 @@ class DetailSurahView extends GetView<DetailSurahController> {
     final SizeConfig sizeConfig = SizeConfig(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
         title: Text('SURAH ${surah.name?.transliteration?.id?.toUpperCase()}'),
         centerTitle: true,
       ),
@@ -64,7 +63,11 @@ class DetailSurahView extends GetView<DetailSurahController> {
               }
 
               if (!snapshot.hasData) {
-                return const Text('Tidak ada Data');
+                return const Expanded(
+                  child: Center(
+                    child: Text('Tidak ada Data'),
+                  ),
+                );
               }
 
               return Expanded(

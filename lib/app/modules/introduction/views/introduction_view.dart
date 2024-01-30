@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../data/constant/color.dart';
 import '../../../data/constant/size_config.dart';
 import '../controllers/introduction_controller.dart';
 
@@ -17,16 +18,21 @@ class IntroductionView extends GetView<IntroductionController> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             "Al-Qur'an Apps",
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Get.isDarkMode ? appWhite : appPurple,
+            ),
           ),
           SizedBox(height: sizeConfig.getProportionateScreenHeight(10)),
-          const Text(
+          Text(
             "Seberapakah sibuk anda\nsampai tidak membaca al - qu'ran",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15,
+              color: Get.isDarkMode ? appWhite : appGrey,
             ),
           ),
           SizedBox(height: sizeConfig.getProportionateScreenHeight(20)),
@@ -46,15 +52,15 @@ class IntroductionView extends GetView<IntroductionController> {
               width: sizeConfig.getProportionateScreenWidth(200),
               height: sizeConfig.getProportionateScreenHeight(40),
               decoration: BoxDecoration(
-                color: Colors.teal.shade500,
-                borderRadius: BorderRadius.circular(10),
+                color: appPurpleLight1,
+                borderRadius: BorderRadius.circular(20),
               ),
               child: const Center(
                   child: Text(
                 'MULAI',
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                  fontSize: 17,
+                  color: appWhite,
                 ),
               )),
             ),
