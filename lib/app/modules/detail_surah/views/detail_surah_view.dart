@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/constant/color.dart';
 import '../../../data/constant/size_config.dart';
 import '../../../data/models/detail_surah.dart' as detail;
 import '../../../data/models/surah.dart';
@@ -20,32 +21,36 @@ class DetailSurahView extends GetView<DetailSurahController> {
       ),
       body: Column(
         children: [
-          Card(
-            color: Colors.white,
+          SizedBox(height: sizeConfig.getProportionateScreenHeight(10)),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: const LinearGradient(
+                colors: [
+                  appPurpleLight2,
+                  appPurpleLight1,
+                ],
+              ),
+            ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: sizeConfig.getProportionateScreenHeight(10),
-                  horizontal: sizeConfig.getProportionateScreenWidth(120)),
+                vertical: sizeConfig.getProportionateScreenHeight(10),
+                horizontal: sizeConfig.getProportionateScreenWidth(120),
+              ),
               child: Column(
                 children: [
                   Text(
-                    '${surah.name?.transliteration?.id}',
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
+                    '${surah.name?.transliteration?.id}'.toUpperCase(),
+                    style: const TextStyle(fontSize: 20, color: appWhite),
                   ),
                   Text(
-                    '(${surah.name?.translation?.id})',
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
+                    '( ${surah.name?.translation?.id} )'.toUpperCase(),
+                    style: const TextStyle(fontSize: 15, color: appWhite),
                   ),
                   SizedBox(height: sizeConfig.getProportionateScreenHeight(10)),
                   Text(
                     '${surah.numberOfVerses} | ${surah.revelation?.id} ',
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
+                    style: const TextStyle(fontSize: 15, color: appWhite),
                   ),
                 ],
               ),
@@ -76,72 +81,93 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   itemBuilder: (context, index) {
                     detail.Verse? ayat = snapshot.data?.verses?[index];
                     return Padding(
-                      padding: EdgeInsets.all(
-                          sizeConfig.getProportionateScreenWidth(20)),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: sizeConfig.getProportionateScreenWidth(10),
+                        vertical: sizeConfig.getProportionateScreenHeight(10),
+                      ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Card(
-                                child: Padding(
-                                  padding: EdgeInsets.all(
+                          Card(
+                            color: Get.isDarkMode ? appPurpleLight1 : appWhite,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal:
                                     sizeConfig.getProportionateScreenWidth(8),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      CircleAvatar(
-                                        child: Text('${index + 1}'),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image:
+                                            AssetImage('assets/img/list.png'),
+                                        fit: BoxFit.contain,
                                       ),
-                                      Row(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.bookmark_add_outlined,
-                                            ),
-                                          ),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.play_circle,
-                                            ),
-                                          ),
-                                        ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '${surah.number}',
+                                        style: TextStyle(
+                                          color: Get.isDarkMode
+                                              ? appWhite
+                                              : appPurple,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.bookmark_add_outlined,
+                                          color: appPurpleLight2,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.play_circle,
+                                          color: appPurpleLight2,
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ),
+                                ],
                               ),
-                              Text(
-                                ayat?.text?.arab ?? 'error',
-                                textAlign: TextAlign.end,
-                                style: const TextStyle(fontSize: 25),
-                                // style: Text,
-                              ),
-                              SizedBox(
-                                height:
-                                    sizeConfig.getProportionateScreenHeight(10),
-                              ),
-                              Text(
-                                ayat?.text?.transliteration?.en ?? "error",
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 16),
-                                // style: Text,
-                              ),
-                              SizedBox(
-                                height:
-                                    sizeConfig.getProportionateScreenHeight(10),
-                              ),
-                              Text(
-                                ayat?.translation?.id ?? 'error',
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 20),
-                                // style: Text,
-                              ),
-                            ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: sizeConfig.getProportionateScreenHeight(10),
+                          ),
+                          Text(
+                            ayat?.text?.arab ?? 'error',
+                            textAlign: TextAlign.end,
+                            style: const TextStyle(fontSize: 25),
+                            // style: Text,
+                          ),
+                          SizedBox(
+                            height: sizeConfig.getProportionateScreenHeight(15),
+                          ),
+                          Text(
+                            ayat?.text?.transliteration?.en ?? "error",
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(fontSize: 16),
+                            // style: Text,
+                          ),
+                          SizedBox(
+                            height: sizeConfig.getProportionateScreenHeight(15),
+                          ),
+                          Text(
+                            ayat?.translation?.id ?? 'error',
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(fontSize: 20),
+                            // style: Text,
                           )
                         ],
                       ),
