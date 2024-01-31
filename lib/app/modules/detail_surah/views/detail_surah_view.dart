@@ -21,38 +21,45 @@ class DetailSurahView extends GetView<DetailSurahController> {
       ),
       body: Column(
         children: [
-          SizedBox(height: sizeConfig.getProportionateScreenHeight(10)),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              gradient: const LinearGradient(
-                colors: [
-                  appPurpleLight2,
-                  appPurpleLight1,
-                ],
-              ),
+          SizedBox(height: sizeConfig.getProportionateScreenHeight(20)),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: sizeConfig.getProportionateScreenWidth(10),
+              vertical: sizeConfig.getProportionateScreenHeight(10),
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: sizeConfig.getProportionateScreenHeight(10),
-                horizontal: sizeConfig.getProportionateScreenWidth(120),
+            child: Container(
+              width: Get.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                gradient: const LinearGradient(
+                  colors: [
+                    appPurpleLight2,
+                    appPurpleLight1,
+                  ],
+                ),
               ),
-              child: Column(
-                children: [
-                  Text(
-                    '${surah.name?.transliteration?.id}'.toUpperCase(),
-                    style: const TextStyle(fontSize: 20, color: appWhite),
-                  ),
-                  Text(
-                    '( ${surah.name?.translation?.id} )'.toUpperCase(),
-                    style: const TextStyle(fontSize: 15, color: appWhite),
-                  ),
-                  SizedBox(height: sizeConfig.getProportionateScreenHeight(10)),
-                  Text(
-                    '${surah.numberOfVerses} | ${surah.revelation?.id} ',
-                    style: const TextStyle(fontSize: 15, color: appWhite),
-                  ),
-                ],
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: sizeConfig.getProportionateScreenHeight(10),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      '${surah.name?.transliteration?.id}'.toUpperCase(),
+                      style: const TextStyle(fontSize: 20, color: appWhite),
+                    ),
+                    Text(
+                      '( ${surah.name?.translation?.id} )'.toUpperCase(),
+                      style: const TextStyle(fontSize: 15, color: appWhite),
+                    ),
+                    SizedBox(
+                        height: sizeConfig.getProportionateScreenHeight(10)),
+                    Text(
+                      '${surah.numberOfVerses} | ${surah.revelation?.id} ',
+                      style: const TextStyle(fontSize: 15, color: appWhite),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

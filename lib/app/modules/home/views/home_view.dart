@@ -4,7 +4,6 @@ import 'package:alquran/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
 import '../../../data/constant/size_config.dart';
 import '../controllers/home_controller.dart';
 import '../widget/juz_view.dart';
