@@ -6,7 +6,11 @@ import '../../../data/models/surah.dart';
 import '../../../routes/app_pages.dart';
 
 class SurahView extends StatelessWidget {
-  const SurahView({super.key, required this.theme, required this.data});
+  const SurahView({
+    super.key,
+    required this.theme,
+    required this.data,
+  });
   final bool theme;
   final Future<List<Surah>> data;
 

@@ -1,52 +1,4 @@
 class DetailJuz {
-  int? juz;
-  int? juzStartSurahNumber;
-  int? juzEndSurahNumber;
-  String? juzStartInfo;
-  String? juzEndInfo;
-  int? totalVerses;
-  List<Verses>? verses;
-
-  DetailJuz(
-      {this.juz,
-      this.juzStartSurahNumber,
-      this.juzEndSurahNumber,
-      this.juzStartInfo,
-      this.juzEndInfo,
-      this.totalVerses,
-      this.verses});
-
-  DetailJuz.fromJson(Map<String, dynamic> json) {
-    juz = json['juz'];
-    juzStartSurahNumber = json['juzStartSurahNumber'];
-    juzEndSurahNumber = json['juzEndSurahNumber'];
-    juzStartInfo = json['juzStartInfo'];
-    juzEndInfo = json['juzEndInfo'];
-    totalVerses = json['totalVerses'];
-    if (json['verses'] != null) {
-      verses = <Verses>[];
-      json['verses'].forEach((v) {
-        verses!.add(Verses.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['juz'] = juz;
-    data['juzStartSurahNumber'] = juzStartSurahNumber;
-    data['juzEndSurahNumber'] = juzEndSurahNumber;
-    data['juzStartInfo'] = juzStartInfo;
-    data['juzEndInfo'] = juzEndInfo;
-    data['totalVerses'] = totalVerses;
-    if (verses != null) {
-      data['verses'] = verses!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Verses {
   Number? number;
   Meta? meta;
   Text? text;
@@ -54,7 +6,7 @@ class Verses {
   Audio? audio;
   Tafsir? tafsir;
 
-  Verses(
+  DetailJuz(
       {this.number,
       this.meta,
       this.text,
@@ -62,7 +14,7 @@ class Verses {
       this.audio,
       this.tafsir});
 
-  Verses.fromJson(Map<String, dynamic> json) {
+  DetailJuz.fromJson(Map<String, dynamic> json) {
     number = json['number'] != null ? Number.fromJson(json['number']) : null;
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     text = json['text'] != null ? Text.fromJson(json['text']) : null;

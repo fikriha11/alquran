@@ -110,6 +110,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       JuzView(
                         theme: controller.isThemeDark.value,
+                        data: controller.getalljuz(),
                       ),
                       const Center(
                         child: Text(

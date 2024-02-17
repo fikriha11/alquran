@@ -11,6 +11,7 @@ const appGrey = Color(0xffB9A2D8);
 
 const appPurpleDark = Color(0xff1E0771);
 
+// Light Theme
 ThemeData appLight = ThemeData(
   primaryColor: appPurple,
   brightness: Brightness.light,
@@ -33,6 +34,7 @@ ThemeData appLight = ThemeData(
   ),
 );
 
+// Dark Theme
 ThemeData appDark = ThemeData(
   primaryColor: appPurpleDark,
   brightness: Brightness.dark,
